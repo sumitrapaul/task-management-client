@@ -28,6 +28,12 @@ const closeProfile = () => {
       <li>
         <Link className="text-xl" to="/">Home</Link>
       </li>
+      <li>
+        <Link className="text-xl" to="/about">About Me</Link>
+      </li>
+      <li>
+        <Link className="text-xl" to="/contact">Contact Me</Link>
+      </li>
      
     </>
   );

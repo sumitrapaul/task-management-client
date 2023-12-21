@@ -37,7 +37,7 @@ const Login = () => {
   };
 
   return (
-    <div className="mb-8">
+    <div className="mb-8 ">
       <div>
         <h1 className="text-2xl md:text-3xl font-bold my-6 text-center">
           Login now!

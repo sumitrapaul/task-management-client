@@ -9,8 +9,8 @@ const Footer = () => {
     <div className="mt-8">
       <footer className="footer footer-center p-10 bg-cyan-600 text-base-content rounded">
         <nav className="grid grid-flow-col gap-4">
-          <Link className="text-white text-xl font-semibold">About us</Link>
-          <Link className="text-white text-xl font-semibold">Contact</Link>
+          <Link to='/about' className="text-white text-xl font-semibold">About Me</Link>
+          <Link to='/contact' className="text-white text-xl font-semibold">Contact Me</Link>
          
         </nav>
         <nav>
