@@ -3,7 +3,7 @@ import { TypeAnimation } from "react-type-animation";
 
 const Banner = () => {
   return (
-    <div className="mt-6">
+    <div className="mt-10">
       <div
         className="hero min-h-screen"
         style={{ backgroundImage: "url(https://i.ibb.co/j4DTy6X/image.png)" }}

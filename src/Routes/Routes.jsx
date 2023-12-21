@@ -8,6 +8,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
+import Profile from "../Pages/Dashboard/Profile/profile";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       path:'/dashboard',
       element:<Dashboard></Dashboard>,
       children:[
+        {
+          path:'profile',
+          element:<Profile></Profile>
+        },
         {
           path:'createTask',
           element:<TaskCreate></TaskCreate>

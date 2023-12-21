@@ -6,11 +6,11 @@ const Footer = () => {
     const currentYear = new Date().getFullYear()
 
   return (
-    <div className="mt-8">
+    <div className="mt-10">
       <footer className="footer footer-center p-10 bg-cyan-600 text-base-content rounded">
         <nav className="grid grid-flow-col gap-4">
-          <Link to='/about' className="text-white text-xl font-semibold">About Me</Link>
-          <Link to='/contact' className="text-white text-xl font-semibold">Contact Me</Link>
+          <Link to='/about' className="text-white text-xl font-semibold">About Us</Link>
+          <Link to='/contact' className="text-white text-xl font-semibold">Contact</Link>
          
         </nav>
         <nav>
