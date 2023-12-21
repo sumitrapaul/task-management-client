@@ -1,16 +1,16 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-
+  const navigate = useNavigate()
   const [showProfileDropDown, setShowProfileDropDown] = useState(false)
   const handleLogout = () => {
     logOut()
       .then(() => {
-        
+        navigate('/')
       })
       .catch((error) => console.log(error));
   };

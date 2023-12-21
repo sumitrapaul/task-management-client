@@ -12,6 +12,7 @@ import {
   } from "firebase/auth";
   import { createContext, useEffect, useState } from "react";
   import app from "../firebase/firebase.config";
+import axios from "axios";
   
   export const AuthContext = createContext();
   
@@ -46,16 +47,46 @@ import {
       setLoading(true);
       return signOut(auth);
     };
-  
-    useEffect(() =>{
-        const unsubscribe=onAuthStateChanged(auth, (user) =>{
-            setUser(user)
-            setLoading(false)
-        });
-        return () =>{
-            unsubscribe()
+
+    useEffect(() => {
+      const unsubsCribe = onAuthStateChanged(auth, (currentUser) => {
+        const userEmail = currentUser?.email || user?.email;
+        const loggedUser = { email: userEmail };
+        setUser(currentUser);
+        // console.log('current user',currentUser)
+        setLoading(false);
+        //
+        if (currentUser) {
+          axios
+            .post(
+              "http://localhost:5000/auth",
+              loggedUser,
+              {
+                withCredentials: true,
+              }
+            )
+            .then((res) => {
+              console.log(res.data);
+            });
+        } else {
+          axios
+            .post(
+              "http://localhost:5000/logout",
+              loggedUser,
+              {
+                withCredentials: true,
+              }
+            )
+            .then((res) => {
+              console.log(res.data);
+            });
         }
-    },[])
+      });
+  
+      return () => {
+        return unsubsCribe();
+      };
+    }, [user?.email]);
   
     const authInfo = {
       user,

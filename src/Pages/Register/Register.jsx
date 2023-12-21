@@ -3,6 +3,7 @@ import { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser, handleProfileUpdate, googleLogin } = useContext(AuthContext);
@@ -53,7 +54,9 @@ const Register = () => {
 
   return (
     <div className="mb-8 h-auto" style={{backgroundImage: `url('https://i.ibb.co/xL35K73/image.png')`,backgroundSize: 'cover', backgroundPosition: 'center', height: '700px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop:'4px'}}>
-     
+       <Helmet>
+        <title>TaskMaster | Register</title>
+      </Helmet>
       <div className="card flex-shrink-0 w-[400px] md:w-[500px] mx-auto shadow-2xl bg-base-100">
         <form onSubmit={handleRegister} className="card-body">
         <div>

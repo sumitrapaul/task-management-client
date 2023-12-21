@@ -1,6 +1,7 @@
 import {  } from "@emailjs/browser";
 import emailjs from "emailjs-com";
 import { useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 
@@ -42,7 +43,9 @@ const Contact = () => {
 
     return (
         <div className="mt-12 flex justify-center" style={{backgroundImage: `url('https://i.ibb.co/j4DTy6X/image.pnghttps://i.ibb.co/ZgPYxQ3/image.png')`,backgroundSize: 'cover', height:'500px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-           
+             <Helmet>
+        <title>TaskMaster | Contact</title>
+      </Helmet>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 p-6">
           <form ref={form} onSubmit={sendEmail}>
            <div>

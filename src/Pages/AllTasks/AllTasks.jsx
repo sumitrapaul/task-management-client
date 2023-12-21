@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import AllTask from "./AllTask";
+import { Helmet } from "react-helmet-async";
 
 
 const AllTasks = () => {
@@ -21,6 +22,9 @@ const AllTasks = () => {
     return (
         <div>
             <div className="overflow-x-auto mt-8">
+            <Helmet>
+        <title>TaskMaster | AllTasks</title>
+      </Helmet>
         <table className="table table-xs">
           <thead>
             <tr>

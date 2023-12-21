@@ -3,6 +3,7 @@ import { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn, googleLogin } = useContext(AuthContext);
@@ -38,6 +39,9 @@ const Login = () => {
 
   return (
     <div className="mb-8" style={{backgroundImage: `url('https://i.ibb.co/xL35K73/image.png')`,backgroundSize: 'cover', backgroundPosition: 'center', height:'600px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop:"10px"}}>
+        <Helmet>
+        <title>TaskMaster | Login</title>
+      </Helmet>
       <div className="card flex-shrink-0 w-[400px] md:w-[500px] mx-auto shadow-2xl bg-base-100">
         <form onSubmit={handleLogin} className="card-body">
         <div>

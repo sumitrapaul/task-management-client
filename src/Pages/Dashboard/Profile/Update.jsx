@@ -1,36 +1,31 @@
-/* eslint-disable no-unused-vars */
-import { useForm } from "react-hook-form";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { AuthContext } from "../../../Provider/AuthProvider";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
 
-const TaskCreate = () => {
-  const { user } = useContext(AuthContext);
- 
-  const { email, displayName } = user || "";
-  const { register, handleSubmit } = useForm();
-  const currentDate = new Date();
-  const [selectedDeadline, setSelectedDeadline] = useState(new Date());
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false)
+const Update = () => {
+    const { user } = useContext(AuthContext);
+    const { id } = useParams();
+    console.log(id)
+    const { email, displayName } = user || "";
+    const { register, handleSubmit } = useForm();
+    const currentDate = new Date();
+    const [selectedDeadline, setSelectedDeadline] = useState(new Date());
+    const navigate = useNavigate()
 
+    
   const onSubmit = (data) => {
-
-   setLoading(true)
-
-    data.useremail = email;
+    data.userEmail = email;
     data.userName = displayName;
-    const formatDeadline = selectedDeadline.toLocaleDateString();
-    data.deadline = formatDeadline;
-    data.status = "Todo";
-    fetch("http://localhost:5000/tasks", {
-      method: "POST",
+
+    data.deadline = selectedDeadline.toLocaleDateString();
+    fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -39,24 +34,27 @@ const TaskCreate = () => {
       .then((res) => res.json())
 
       .then((result) => {
-        toast.success("Successfully task added");
-        console.log(result);
-        navigate("/");
+        if (result.modifiedCount > 0) {
+          toast.success("Task updated successfully");
+          navigate("/");
+        }
       });
   };
 
-  const handleDeadline = (date) => {
-    setSelectedDeadline(date);
-  };
 
-  return (
-    <div>
+    const handleDeadline = (date) => {
+        setSelectedDeadline(date);
+      };
+
+    return (
+        <div>
+            <div>
       <div className="bg-[#F4F3F0] p-24">
         <Helmet>
-          <title>TaskMaster | Create A Task</title>
+          <title>TaskMaster | Update A Task</title>
         </Helmet>
         <h2 className="text-2xl md:text-3xl font-bold my-2 text-center text-cyan-600">
-          Add A Task
+          Update A Task
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
           <label
@@ -83,6 +81,7 @@ const TaskCreate = () => {
 
           <select
             className="text-input bg-gray-300 px-5 py-2 rounded"
+            
             {...register("priority")}
           >
             <option value="low">low</option>
@@ -99,6 +98,7 @@ const TaskCreate = () => {
 
           <input
             type="text"
+           
             {...register("description")}
             placeholder="Task Description"
             required
@@ -124,14 +124,15 @@ const TaskCreate = () => {
 
           <input
             type="submit"
-            value="Add Task"
+            value="Update Task"
             className="btn btn-block bg-cyan-600 text-white text-xl"
           />
         </form>
       </div>
       <ToastContainer />
     </div>
-  );
+        </div>
+    );
 };
 
-export default TaskCreate;
+export default Update;
