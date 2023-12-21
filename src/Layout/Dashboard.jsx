@@ -6,17 +6,17 @@ const Dashboard = () => {
 
   return (
     <div className="flex gap-6">
-      <div className="w-64 min-h-screen bg-red-200">
+      <div className="w-64 min-h-screen bg-cyan-600">
         <ul className="menu space-y-4">
           <>
             <li>
-              <NavLink to="/dashboard/createTask">Task Create</NavLink>
+              <NavLink to="/dashboard/createTask" className="text-xl font-bold">Task Create</NavLink>
             </li>
           </>
 
           <div className="divider"></div>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/" className="text-xl font-bold">Home</NavLink>
           </li>
         </ul>
       </div>

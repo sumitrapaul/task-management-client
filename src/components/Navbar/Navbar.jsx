@@ -43,7 +43,7 @@ const closeProfile = () => {
   );
 
   return (
-    <div className="navbar bg-gray-400 lg:text-black">
+    <div className="navbar bg-cyan-600 lg:text-black">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-black lg:hidden">
@@ -64,14 +64,14 @@ const closeProfile = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-500 text-white rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-cyan-600 text-white rounded-box w-52"
           >
             {navLinks}
           </ul>
         </div>
         <div className="flex justify-center items-center">
           <img
-            className="h-12 w-12"
+            className="h-12 w-12 ml-8 md:ml-2 lg:ml-0"
             src="https://i.ibb.co/b7ZDfmx/download-removebg-preview.png"
             alt=""
           />
@@ -103,7 +103,7 @@ const closeProfile = () => {
           </div>
         ) : (
           <Link to="/login">
-            <button className="btn btn-outline border-red-400 text-white">
+            <button className="btn btn-outline border-2 text-white text-xl">
               Login
             </button>
           </Link>
