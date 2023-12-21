@@ -37,14 +37,14 @@ const Login = () => {
   };
 
   return (
-    <div className="mb-8 ">
-      <div>
-        <h1 className="text-2xl md:text-3xl font-bold my-6 text-center">
+    <div className="mb-8" style={{backgroundImage: `url('https://i.ibb.co/xL35K73/image.png')`,backgroundSize: 'cover', backgroundPosition: 'center', height:'600px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop:"10px"}}>
+      <div className="card flex-shrink-0 w-[400px] md:w-[500px] mx-auto shadow-2xl bg-base-100">
+        <form onSubmit={handleLogin} className="card-body">
+        <div>
+        <h1 className="text-2xl md:text-3xl font-bold my-2 text-center">
           Login now!
         </h1>
       </div>
-      <div className="card flex-shrink-0 w-[400px] md:w-[500px] mx-auto shadow-2xl bg-base-100">
-        <form onSubmit={handleLogin} className="card-body">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -53,7 +53,7 @@ const Login = () => {
               type="email"
               placeholder="Enter your email"
               name="email"
-              className="input input-bordered"
+              className="input input-bordered border-cyan-600 text-black font-bold"
               required
             />
           </div>
@@ -65,23 +65,23 @@ const Login = () => {
               type="password"
               placeholder="Enter your password"
               name="password"
-              className="input input-bordered"
+              className="input input-bordered border-cyan-600 text-black font-bold"
               required
             />
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Login</button>
+            <button className="btn bg-cyan-600 text-white text-xl">Login</button>
           </div>
         </form>
 
         <p className="text-center mb-4">
           Do not have an account? Please{" "}
-          <Link to="/register" className="text-blue-600 font-bold">
+          <Link to="/register" className="text-cyan-600 font-bold">
             Register
           </Link>
         </p>
         <div className="flex justify-center items-center">
-          <button onClick={handleGoogle} className="btn btn-primary">
+          <button onClick={handleGoogle} className="btn bg-cyan-600 text-white text-xl">
             Google
           </button>
         </div>

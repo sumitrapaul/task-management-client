@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
-  const { createUser, handleProfileUpdate } = useContext(AuthContext);
+  const { createUser, handleProfileUpdate, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -40,15 +40,27 @@ const Register = () => {
       });
   };
 
+  const handleGoogle = () => {
+    googleLogin()
+      .then((result) => {
+        toast.success("Users logged in successfully!!");
+        navigate("/")
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
-    <div className="mb-8">
-      <div>
-        <h1 className="text-2xl md:text-3xl font-bold my-6 text-center">
+    <div className="mb-8 h-auto" style={{backgroundImage: `url('https://i.ibb.co/xL35K73/image.png')`,backgroundSize: 'cover', backgroundPosition: 'center', height: '700px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop:'4px'}}>
+     
+      <div className="card flex-shrink-0 w-[400px] md:w-[500px] mx-auto shadow-2xl bg-base-100">
+        <form onSubmit={handleRegister} className="card-body">
+        <div>
+        <h1 className="text-2xl md:text-3xl font-bold my-2 text-center">
           Register now!
         </h1>
       </div>
-      <div className="card flex-shrink-0 w-[400px] md:w-[500px] mx-auto shadow-2xl bg-base-100">
-        <form onSubmit={handleRegister} className="card-body">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>
@@ -57,7 +69,7 @@ const Register = () => {
               type="text"
               placeholder="Enter your name"
               name="name"
-              className="input input-bordered"
+              className="input input-bordered border-cyan-600 text-black font-bold"
               required
             />
           </div>
@@ -69,7 +81,7 @@ const Register = () => {
               type="email"
               placeholder="Enter your email"
               name="email"
-              className="input input-bordered"
+              className="input input-bordered text-black font-bold border-cyan-600"
               required
             />
           </div>
@@ -81,7 +93,7 @@ const Register = () => {
               type="text"
               placeholder="Enter your photo"
               name="image"
-              className="input input-bordered"
+              className="input input-bordered border-cyan-600 text-black font-bold"
               required
             />
           </div>
@@ -93,20 +105,25 @@ const Register = () => {
               type="password"
               placeholder="Enter your password"
               name="password"
-              className="input input-bordered"
+              className="input input-bordered border-cyan-600 text-black font-bold"
               required
             />
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-gradient-to-r from-cyan-950 to-emerald-900 text-white">Register</button>
+            <button className="btn bg-cyan-600 text-white text-xl">Register</button>
           </div>
         </form>
         <p className="text-center">
           Already have an account? Please{" "}
-          <Link to="/login" className="text-blue-500 font-bold">
+          <Link to="/login" className="text-cyan-600 font-bold">
             Login
           </Link>
         </p>
+        <div className="flex justify-center items-center">
+          <button onClick={handleGoogle} className="btn bg-cyan-600 text-white text-xl">
+            Google
+          </button>
+        </div>
       </div>
       <Toaster />
     </div>
