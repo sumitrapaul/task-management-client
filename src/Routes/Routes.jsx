@@ -9,6 +9,7 @@ import Register from "../Pages/Register/Register";
 import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import Profile from "../Pages/Dashboard/Profile/profile";
+import AllTasks from "../Pages/AllTasks/AllTasks";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         {
           path:'/contact',
           element:<Contact/>
+        },
+        {
+          path:'/tasks',
+          element:<AllTasks/>
         },
       ],
     },
