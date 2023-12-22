@@ -23,7 +23,7 @@ const Update = () => {
     data.userName = displayName;
 
     data.deadline = selectedDeadline.toLocaleDateString();
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`https://task-management-server-lake-ten.vercel.app/tasks/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -35,7 +35,7 @@ const Update = () => {
       .then((result) => {
         if (result.modifiedCount > 0) {
           toast.success("Task updated successfully");
-          navigate("/dashboard/myTask");
+          navigate("/dashboard/tasks");
         }
       });
   };

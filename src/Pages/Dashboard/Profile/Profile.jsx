@@ -28,7 +28,7 @@ const Profile = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/tasks/${_id}`, {
+        fetch(`https://task-management-server-lake-ten.vercel.app/tasks/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -57,7 +57,7 @@ const Profile = () => {
    const updatedTasks = task.map((t) => {
       if (t._id === taskId) {
         t.status = status;
-        axios.put(`http://localhost:5000/tasks/${taskId}`, { status });
+        axios.put(`https://task-management-server-lake-ten.vercel.app/tasks/${taskId}`, { status });
       }
       return t;
     });

@@ -73,7 +73,7 @@ const router = createBrowserRouter([
       {
         path: "updateTask/:id",
         element: <Update></Update>,
-        loader: ({ params }) => `http://localhost:5000/tasks/${params.id}`,
+        loader: ({ params }) => `https://task-management-server-lake-ten.vercel.app/tasks/${params.id}`,
       },
     ],
   },

@@ -28,7 +28,7 @@ const TaskCreate = () => {
     data.userName = displayName;
     data.deadline = selectedDeadline;
     data.status = "Todo";
-    fetch("http://localhost:5000/tasks", {
+    fetch("https://task-management-server-lake-ten.vercel.app/tasks", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -40,7 +40,7 @@ const TaskCreate = () => {
       .then((result) => {
         toast.success("Successfully task added");
         console.log(result);
-        navigate("/dashboard/myTask");
+        navigate("/dashboard/tasks");
       });
   };
 
