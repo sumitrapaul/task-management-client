@@ -32,12 +32,14 @@ const Banner = () => {
               Effortlessly manage tasks,collaborate with your team,boost
               productivity!
             </p>
-            <Link to='/login'><button className="btn btn-outline text-white bg-cyan-600 text-xl">Let’s Explore</button></Link>
+            <Link to="/login">
+              <button className="btn btn-outline text-white bg-cyan-600 text-xl">
+                Let’s Explore
+              </button>
+            </Link>
           </div>
         </div>
-      
       </div>
-      
     </div>
   );
 };

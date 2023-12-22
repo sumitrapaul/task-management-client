@@ -2,42 +2,49 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
-
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const navigate = useNavigate()
-  const [showProfileDropDown, setShowProfileDropDown] = useState(false)
+
+  const navigate = useNavigate();
+  const [showProfileDropDown, setShowProfileDropDown] = useState(false);
   const handleLogout = () => {
     logOut()
       .then(() => {
-        navigate('/')
+        navigate("/");
       })
       .catch((error) => console.log(error));
   };
 
-const toggleDropDown = () =>{
-  setShowProfileDropDown((prev) => !prev)
-}
+  const toggleDropDown = () => {
+    setShowProfileDropDown((prev) => !prev);
+  };
 
-const closeProfile = () => {
-  setShowProfileDropDown(false)
-}
+  const closeProfile = () => {
+    setShowProfileDropDown(false);
+  };
 
   const navLinks = (
     <>
       <li>
-        <Link className="text-xl" to="/">Home</Link>
+        <Link className="text-xl" to="/">
+          Home
+        </Link>
       </li>
       <li>
-        <Link className="text-xl" to="/about">About</Link>
+        <Link className="text-xl" to="/tasks">
+          Pending Tasks
+        </Link>
       </li>
       <li>
-        <Link className="text-xl" to="/contact">Contact</Link>
+        <Link className="text-xl" to="/about">
+          About Us
+        </Link>
       </li>
       <li>
-        <Link className="text-xl" to="/tasks">All Tasks</Link>
+        <Link className="text-xl" to="/contact">
+          Contact
+        </Link>
       </li>
-     
     </>
   );
 
@@ -47,7 +54,9 @@ const closeProfile = () => {
       <li className="text-black">
         <Link to="/dashboard">Dashboard</Link>
       </li>
-      <li className="text-black" onClick={handleLogout}>Logout</li>
+      <li className="text-black" onClick={handleLogout}>
+        Logout
+      </li>
     </>
   );
 
@@ -94,7 +103,11 @@ const closeProfile = () => {
         {user ? (
           <div className="flex justify-center">
             <div className="dropdown dropdown-hover">
-              <label onClick={toggleDropDown} tabIndex={0} className="hover:underline">
+              <label
+                onClick={toggleDropDown}
+                tabIndex={0}
+                className="hover:underline"
+              >
                 <img
                   className="h-10 w-10 rounded-full cursor-pointer"
                   src={user.photoURL}
@@ -103,7 +116,9 @@ const closeProfile = () => {
               </label>
               <ul
                 tabIndex={0}
-                className={`dropdown-content menu z-[1] -ml-20 p-2 bg-base-100 shadow rounded-box w-52 ${showProfileDropDown ? 'block' : 'hidden'}`}
+                className={`dropdown-content menu z-[1] -ml-20 p-2 bg-base-100 shadow rounded-box w-52 ${
+                  showProfileDropDown ? "block" : "hidden"
+                }`}
                 onBlur={closeProfile}
               >
                 {profileLinks}

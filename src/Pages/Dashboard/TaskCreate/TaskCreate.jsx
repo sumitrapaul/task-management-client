@@ -26,8 +26,7 @@ const TaskCreate = () => {
 
     data.useremail = email;
     data.userName = displayName;
-    const formatDeadline = selectedDeadline.toLocaleDateString();
-    data.deadline = formatDeadline;
+    data.deadline = selectedDeadline;
     data.status = "Todo";
     fetch("http://localhost:5000/tasks", {
       method: "POST",
@@ -41,7 +40,7 @@ const TaskCreate = () => {
       .then((result) => {
         toast.success("Successfully task added");
         console.log(result);
-        navigate("/");
+        navigate("/dashboard/myTask");
       });
   };
 

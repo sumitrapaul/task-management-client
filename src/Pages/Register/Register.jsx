@@ -6,7 +6,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 
 const Register = () => {
-  const { createUser, handleProfileUpdate, googleLogin } = useContext(AuthContext);
+  const { createUser, handleProfileUpdate, googleLogin } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -30,7 +31,7 @@ const Register = () => {
     }
     createUser(email, password)
       .then((res) => {
-        const user={email}
+        const user = { email };
         handleProfileUpdate(name, image).then((res) => {
           toast.success("Users created successfully");
           navigate("/");
@@ -45,7 +46,7 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         toast.success("Users logged in successfully!!");
-        navigate("/")
+        navigate("/");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -53,17 +54,29 @@ const Register = () => {
   };
 
   return (
-    <div className="mb-8 h-auto" style={{backgroundImage: `url('https://i.ibb.co/xL35K73/image.png')`,backgroundSize: 'cover', backgroundPosition: 'center', height: '700px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop:'4px'}}>
-       <Helmet>
+    <div
+      className="mb-8 h-auto"
+      style={{
+        backgroundImage: `url('https://i.ibb.co/xL35K73/image.png')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "700px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: "4px",
+      }}
+    >
+      <Helmet>
         <title>TaskMaster | Register</title>
       </Helmet>
       <div className="card flex-shrink-0 w-[400px] md:w-[500px] mx-auto shadow-2xl bg-base-100">
         <form onSubmit={handleRegister} className="card-body">
-        <div>
-        <h1 className="text-2xl md:text-3xl font-bold my-2 text-center">
-          Register now!
-        </h1>
-      </div>
+          <div>
+            <h1 className="text-2xl md:text-3xl font-bold my-2 text-center">
+              Register now!
+            </h1>
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>
@@ -113,7 +126,9 @@ const Register = () => {
             />
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-cyan-600 text-white text-xl">Register</button>
+            <button className="btn bg-cyan-600 text-white text-xl">
+              Register
+            </button>
           </div>
         </form>
         <p className="text-center">
@@ -123,7 +138,10 @@ const Register = () => {
           </Link>
         </p>
         <div className="flex justify-center items-center">
-          <button onClick={handleGoogle} className="btn bg-cyan-600 text-white text-xl">
+          <button
+            onClick={handleGoogle}
+            className="btn bg-cyan-600 text-white text-xl"
+          >
             Google
           </button>
         </div>

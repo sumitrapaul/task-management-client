@@ -6,15 +6,16 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const AllTask = ({ t }) => {
   const { user } = useContext(AuthContext);
   // console.log(user);
-  const { _id, userName, title, priority, deadline, status } = t;
+  const { _id, userName, description, title, priority, deadline, status } = t;
 
   return (
     <tr>
-      <td className="text-xl">{userName}</td>
-      <td className="text-xl">{title}</td>
-      <td className="text-xl">{deadline}</td>
-      <td className="text-xl">{status}</td>
-      <td className="text-xl">{priority}</td>
+      <td>{userName}</td>
+      <td>{title}</td>
+      <td>{deadline}</td>
+      <td>{status}</td>
+      <td>{description}</td>
+      <td>{priority}</td>
     </tr>
   );
 };

@@ -8,10 +8,11 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
-import Profile from "../Pages/Dashboard/Profile/profile";
 import AllTasks from "../Pages/AllTasks/AllTasks";
 import Update from "../Pages/Dashboard/Profile/Update";
 import PrivateRoute from "./PrivateRoute";
+import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
+import Profile from "../Pages/Dashboard/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/tasks",
-        element: <AllTasks />,
+        element: (
+          <PrivateRoute>
+            <AllTasks />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -50,8 +55,16 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
+        path: "tasks",
+        element: <Profile></Profile>,
+      },
+      {
         path: "profile",
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <UserProfile></UserProfile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "createTask",
@@ -60,8 +73,7 @@ const router = createBrowserRouter([
       {
         path: "updateTask/:id",
         element: <Update></Update>,
-        loader: ({ params }) =>
-          `http://localhost:5000/tasks/${params.id}`,
+        loader: ({ params }) => `http://localhost:5000/tasks/${params.id}`,
       },
     ],
   },

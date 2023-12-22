@@ -1,29 +1,24 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AllTask from "./AllTask";
 import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useTask from "../../hooks/useTask";
 
 
 const AllTasks = () => {
-  const [task, setTask] = useState([])
-  const [loaded, setLoaded] = useState([]);
-    useEffect(() => {
-        const fetchJob = () => {
-          fetch("http://localhost:5000/tasks")
-            .then((res) => res.json())
-            .then((data) => {
-              setLoaded(data);
-              setTask(data);
-            });
-        };
-        fetchJob();
-      }, []);
+  const { user } = useContext(AuthContext)
+
+  const [task, ,refetch] = useTask();
+
+
 
     return (
         <div>
             <div className="overflow-x-auto mt-8">
             <Helmet>
-        <title>TaskMaster | AllTasks</title>
+        <title>TaskMaster | Pending Tasks</title>
       </Helmet>
         <table className="table table-xs">
           <thead>
@@ -32,11 +27,13 @@ const AllTasks = () => {
               <th>Title</th>
               <th>Deadline</th>
               <th>Status</th>
+              <th>Description</th>
               <th>Priority</th>
             </tr>
           </thead>
           <tbody>
-            {task.map((t, i) => (
+            {task
+            .filter((t) => t.status === "Todo").map((t, i) => (
               <AllTask key={t._id} t={t} i={i + 1}></AllTask>
             ))}
           </tbody>
